@@ -1,3 +1,3 @@
-class ApplicationRecord < ActiveRecord::Base
+sclass ApplicationRecord < ActiveRecord::Base
   primary_abstract_class
 end
