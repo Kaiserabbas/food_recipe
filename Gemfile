@@ -9,7 +9,7 @@ gem 'rails', '~> 7.1.2'
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 # https://github.com/heartcombo/devise
-gem 'devise' 
+gem 'devise'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -59,7 +59,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
   # RSpec for testing
-  gem 'rspec-rails', '~> 5.0' 
+  gem 'rspec-rails', '~> 5.0'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
