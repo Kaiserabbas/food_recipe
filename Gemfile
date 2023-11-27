@@ -8,6 +8,9 @@ gem 'rails', '~> 7.1.2'
 # A modern concurrency framework for Ruby
 gem 'rubocop', '>= 1.0', '< 2.0'
 
+# https://github.com/heartcombo/devise
+gem 'devise' 
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
