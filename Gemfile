@@ -11,6 +11,9 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 # https://github.com/heartcombo/devise
 gem 'devise'
 
+# https://github.com/CanCanCommunity/cancancan
+gem 'cancancan', '~> 3.0'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
