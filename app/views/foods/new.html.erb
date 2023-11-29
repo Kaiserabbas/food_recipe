@@ -2,12 +2,16 @@
 
 <div class="form-group">
   <%= form_with(model: @food) do |f| %>
-    <div class="field">
-      <%= f.text_field :food, placeholder: "Food name", autofocus: true, required: true %>
+    <div class="field"> 
+      <%= f.text_field :name, placeholder: "Food name", autofocus: true, required: true %>
     </div>
 
     <div class="field">
       <%= f.text_field :measurement_unit, placeholder: "Measurement unit", required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :quantity, placeholder: "Quantity", required: true %>
     </div>
 
     <div class="field">
@@ -19,3 +23,6 @@
     </div>
   <% end %>
 <div>
+<% if flash[:error].present? %>
+  <p><%= flash[:error] %></p>
+<% end %>
