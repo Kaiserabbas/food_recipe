@@ -19,8 +19,9 @@
   <tbody>
     <% @foods.each do |food| %>
       <tr>
-        <td><%= food.food %></td>
+        <td><%= food.name %>Name</td>
         <td><%= food.measurement_unit %></td>
+        <td><%= food.quantity %></td>
         <td>$<%= food.price %></td>
         <td>
           <% if can? :destroy, food %>
