@@ -24,21 +24,6 @@
     <%= link_to('Register', new_user_registration_path) %>
   <% end %>
 
-      <nav>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <div>
-        <% if user_signed_in? %>
-          <%= link_to 'Recipe App', authenticated_root_path %>
-          <%= link_to 'Foods', foods_path %>
-          <%= link_to 'Recipes', recipes_path %>
-          <%= link_to 'Public Recipes List', public_recipes_path %>
-          <%= link_to 'Users', users_path %>
-        <% else %>
-          <%= link_to 'Recipe App', root_path %>
-        <% end %>
-      </div>
-    </nav>
 
 </div>
     <%= yield %>
