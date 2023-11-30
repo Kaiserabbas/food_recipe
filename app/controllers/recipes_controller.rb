@@ -59,8 +59,6 @@ class RecipesController < ApplicationController
     end
   end
 
-
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end
-
