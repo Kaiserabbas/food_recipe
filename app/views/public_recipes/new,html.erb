@@ -1,0 +1,8 @@
+<h1>Create a new recipe</h1>
+<%= form_for @recipe, method: :post, local: true do |f| %>
+  <%= f.text_field :name, placeholer: "Recipe Name", required: %>
+  <%= f.text_area :cooking_time, placeholer: "Recipe Name", required: %>
+  <%= f.label :preparation_time, placeholer: "Recipe Name", required: %>
+  <%= f.text_area :description, placeholer: "Recipe Name", required: %>
+  <%= f.submit "Submit Your Recipe" %>
+<% end %>
