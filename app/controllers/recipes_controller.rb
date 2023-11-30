@@ -9,19 +9,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
-  # def create
-  #   @recipe = Recipe.new(recipe_params)
-
-  #   respond_to do |format|
-  #     if @recipe.save
-  #       format.html { redirect_to recipes_url, notice: 'Recipe Added successfully.' }
-  #     else
-  #       format.html { render :new, status: :unprocessable_entity }
-  #     end
-  #   end
-
-  # end
-
   def create
     @recipe = current_user.recipes.new(recipe_params)
 
@@ -59,6 +46,10 @@ class RecipesController < ApplicationController
     end
   end
 
+  private
+  def recipe_params
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
+  end  
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end
