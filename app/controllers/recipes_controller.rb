@@ -1,29 +1,66 @@
 class RecipesController < ApplicationController
+  before_action :set_recipe, only: %i[show edit update destroy]
+
   def index
     @recipes = current_user.recipes
   end
 
-  def show; end
+  def new
+    @recipe = Recipe.new
+  end
 
-  def new; end
+  # def create
+  #   @recipe = Recipe.new(recipe_params)
+
+  #   respond_to do |format|
+  #     if @recipe.save
+  #       format.html { redirect_to recipes_url, notice: 'Recipe Added successfully.' }
+  #     else
+  #       format.html { render :new, status: :unprocessable_entity }
+  #     end
+  #   end
+
+  # end
 
   def create
-    @recipe = current_user.recipes.new
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to recipes_path, notice: 'Recipe was created successfully' }
-      else
-        format.html do
-          flash[:error] = @recipe.errors.full_messages.join(', ')
-          render :new, status: :unprocessable_entity
-        end
-      end
+    @recipe = current_user.recipes.new(recipe_params)
+
+    if @recipe.save
+      redirect_to recipes_path, Notice: 'Recipes added successfully'
+    else
+      flash[:notice] = @recipe.errors.full_messages.join(', ')
+      redirect_to request.referrer
     end
   end
 
-  def destroy; end
+  def destroy
+    @recipe.destroy
+    authorize! :destroy, @recipe
 
-  def update; end
+    respond_to do |format|
+      format.html { redirect_to recipes_url, notice: 'Recipe removed successfully.' }
+    end
+  end
 
-  def edit; end
-end
+  def show
+    @foods = current_user.foods
+    @recipe = current_user.recipes.includes(:recipe_foods).find(params[:id])
+    @recipes = Recipe.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.public
+      @recipe.update(public: false)
+      flash.now[:notice] = 'Status changed to private.'
+    else
+      @recipe.update(public: true)
+      flash.now[:notice] = 'Status changed to public'
+    end
+  end
+
+
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
+
