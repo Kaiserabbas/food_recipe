@@ -1,28 +1,12 @@
-<h1>Add Food</h2>
+<h1>Add Food Items</h2>
 
-<div class="form-group">
   <%= form_with(model: @food) do |f| %>
-    <div class="field"> 
       <%= f.text_field :name, placeholder: "Food name", autofocus: true, required: true %>
-    </div>
-
-    <div class="field">
       <%= f.text_field :measurement_unit, placeholder: "Measurement unit", required: true %>
-    </div>
-
-    <div class="field">
       <%= f.text_field :quantity, placeholder: "Quantity", required: true %>
-    </div>
-
-    <div class="field">
       <%= f.text_field :price, placeholder: "Unit price", required: true %>
-    </div>
-
-    <div class="actions">
       <%= f.submit "Add Food" %>
-    </div>
   <% end %>
-<div>
 <% if flash[:error].present? %>
   <p><%= flash[:error] %></p>
 <% end %>
