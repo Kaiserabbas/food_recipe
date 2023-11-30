@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   resources :shopping_lists, except: [:update]
 
   resources :recipes do
-    resources :recipe_foods, only: [:create, :destroy]
+    resources :recipe_foods, only: [:new, :create, :edit, :update, :destroy]
   end
 end
