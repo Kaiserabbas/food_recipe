@@ -39,3 +39,48 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
+img {
+  width: 70em;
+  margin: 0 auto;
+  display: block;
+  border-radius: 150px;
+  border: whitesmoke 3em solid;
+}
+
+h1 {
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 2px 1px 5px rgb(118, 116, 116);
+}
+
+.navbar {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.1);
+}
+
+.navbar li {
+  display: inline-block;
+  margin-right: 20px;
+  list-style: none;
+  text-decoration: none;
+}
+
+.sign-out {
+  margin-left: auto;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.sign-out a:hover {
+  background-color: #fff;
+  color: #4e96e9;
+}

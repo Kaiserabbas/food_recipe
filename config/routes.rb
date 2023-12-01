@@ -5,24 +5,18 @@ Rails.application.routes.draw do
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   
+  root 'recipes#home'
 
-  # Defines the root path route ("/")
-  devise_scope :user do
-    authenticated :user do
-      root :to => "foods#index", as: :authenticated_root
-      get '/users/sign_out' => 'devise/sessions#destroy'
-    end
-    unauthenticated :user do
-      root :to => "devise/sessions#new", as: :unauthenticated_root
-    end
-  end
-
-  resources :users, only: [:index]
   resources :foods, except: [:update]
-  resources :public_recipes,except: [:update]
-  resources :shopping_lists, except: [:update]
+  resources :recipes, except: [:update]
+  get '/public_recipies', to: 'recipes#public_recipies'
+
+  get '/shopping_list', to: 'shopping_list#index'
 
   resources :recipes do
-    resources :recipe_foods, only: [:new, :create, :edit, :update, :destroy]
+    resources :recipe_foods
   end
+  resources :users
+  put '/recipes/:id/toggle_public', to: 'recipes#toggle_public', as: 'toggle_recipe_public'
+
 end
