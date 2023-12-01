@@ -1,19 +1,19 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
   def index
-    @current_user = current_user 
+    @current_user = current_user
     @recipe_foods = RecipeFood.where(user_id: @current_user.id)
     @shopping_list = @recipe_foods.select { |rf| rf.quantity > rf.food.quantity }
 
     render 'index' # Make sure this view corresponds to the index action
   end
 
-
   def show
     return unless @user.nil? || @user == current_user
+
     redirect_to new_user_registration_path, notice: 'Signed out successfully'
   end
-  
+
   def new
     @user = User.new
   end
@@ -40,9 +40,9 @@ class UsersController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-      end
+    end
   end
-  
+
   def destroy
     @user.destroy
 
@@ -68,5 +68,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name)
   end
-  
 end

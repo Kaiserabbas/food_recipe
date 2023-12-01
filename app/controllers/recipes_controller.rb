@@ -38,15 +38,15 @@ class RecipesController < ApplicationController
   end
 
   def update
-      respond_to do |format|
-        if @recipe.update(recipe_params)
-          format.html { redirect_to @recipe, notice: 'Done Successfully!' }
-          format.json { render :show, status: :ok, location: @recipe }
-        else
-          format.html { render :edit, notice: 'Try Again!' }
-          format.json { render json: @recipe.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @recipe.update(recipe_params)
+        format.html { redirect_to @recipe, notice: 'Done Successfully!' }
+        format.json { render :show, status: :ok, location: @recipe }
+      else
+        format.html { render :edit, notice: 'Try Again!' }
+        format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
+    end
   end
 
   def toggle_public
@@ -61,7 +61,8 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
-  end 
+  end
+
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end
