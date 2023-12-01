@@ -19,15 +19,11 @@
   <tbody>
     <% @foods.each do |food| %>
       <tr>
-        <td><%= food.name %></td>
+        <td><%= link_to "#{food.name}", food_path(food.id) %></td>
         <td><%= food.measurement_unit %></td>
         <td><%= food.quantity %></td>
         <td>$<%= food.price %></td>
-        <td>
-          <% if can? :destroy, food %>
-            <%= link_to 'Delete Food', food, data: { turbo_method: :delete, turbo_confirm: 'You are about to delete this food! Do you want to continue?' }, type:"button" %>
-          <% end %>
-        </td>
+        <td><%= link_to 'Delete Food', food, data: { turbo_method: :delete, turbo_confirm: 'You are about to delete this food! Do you want to continue?' }, type:"button" %></td>
       </tr>
     <% end %>
   </tbody>
