@@ -11,29 +11,29 @@
   </head>
 
   <body>
-  <div>
-  
-
-          <p class="notice"><%= notice %></p>
+    <div>
+      <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-  <% if user_signed_in? %>
+      <% if user_signed_in? %>
+      
+      <!--Welcome to the user -->
+      <p> Welcome <strong><%= current_user.name %></strong> to the FoodRecipe <p>
         <nav>
-      <div>
-          <%= link_to 'Recipe App', authenticated_root_path %>
-          <%= link_to 'Foods', foods_path %>
-          <%= link_to 'Recipes', recipes_path %>
-          <%= link_to 'Public Recipes', public_recipes_path %>
-     </div>
-    </nav>
-  <%= button_to 'Sign Out', destroy_user_session_path, method: :delete %>
-  <%= current_user.name %>
-  <% else %>
-    <%= link_to('Login', new_user_session_path) %>
-    <%= link_to('Register', new_user_registration_path) %>
-  <% end %>
-
-
-</div>
+          <div>
+            <ul class="navbar">
+              <li>  <%= link_to 'Recipe App', root_path %></li>
+              <li>  <%= link_to 'Foods', foods_path %></li>
+              <li>  <%= link_to 'Recipes', recipes_path %></li>
+              <li>  <%= link_to "Public Recipes", public_recipies_path %></li>
+              <li class="sign-out"><%= button_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+            <ul>
+          </div>
+          </nav><br>
+      <% else %>
+        <%= link_to('Login', new_user_session_path) %>
+        <%= link_to('Register', new_user_registration_path) %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

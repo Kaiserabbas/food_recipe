@@ -1,24 +1,14 @@
-public_recipe_list
-<h1>Recipes</h1>
-        
-=======
-<h1>Recipe List</h1>
-<%= link_to 'Add Recipe', new_recipe_path %>
-
-<% if @recipes.empty? %>
-  <p>No recipes yet. Please add a recipe.</p>
-<% else %>
-<div> 
-  <ul>
-    <% @recipes.each do |recipe| %>
-        <li>
-          <h4><%= recipe.name %></h4>
-          <p><%= recipe.description %></p>
-          <% if can? :destroy,recipe %>
-            <%= link_to 'Remove', recipe, data: { turbo_method: :delete, turbo_confirm: 'You are about to delete this recipe! Do you want to continue?' }, type:"button" %>
-          <% end %>
-        </li>
-    <% end %> 
-  </ul>
-</div>
-<% end %>
+  <% if notice.present? %>
+    <p><%= notice %></p>
+  <% end %>
+  <h1>Recipes</h1>
+  <div>
+    <% if @recipes.any? %>
+      <% @recipes.each do |recipe| %>
+        <%= render recipe %>
+      <% end %>
+    <% else %>
+      <p>No recipes in database.</p>
+    <% end %>
+  </div>
+  <%= link_to "Add New recipe", new_recipe_path %>

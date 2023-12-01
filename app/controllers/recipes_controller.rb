@@ -1,8 +1,9 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
+  load_and_authorize_resource
 
   def index
-    @recipes = current_user.recipes
+    @recipes = Recipe.includes([:user]).where(user: current_user)
   end
 
   def new
@@ -11,45 +12,57 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = current_user.recipes.new(recipe_params)
-
-    if @recipe.save
-      redirect_to recipes_path, Notice: 'Recipes added successfully'
-    else
-      flash[:notice] = @recipe.errors.full_messages.join(', ')
-      redirect_to request.referrer
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to @recipe, notice: 'Created Successfully' }
+        format.json { render :show, status: :created, location: @recipe }
+      else
+        format.html { render :new, notice: 'Try Again!' }
+        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     @recipe.destroy
-    authorize! :destroy, @recipe
-
     respond_to do |format|
       format.html { redirect_to recipes_url, notice: 'Recipe removed successfully.' }
+      format.json { head :no_content }
     end
   end
 
   def show
-    @foods = current_user.foods
-    @recipe = current_user.recipes.includes(:recipe_foods).find(params[:id])
+    @recipe = Recipe.find(params[:id])
+    @foods = Food.joins(:recipe_foods).where(recipe_foods: { recipe_id: @recipe.id })
     @recipes = Recipe.find(params[:id])
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
-    if @recipe.public
-      @recipe.update(public: false)
-      flash.now[:notice] = 'Status changed to private.'
-    else
-      @recipe.update(public: true)
-      flash.now[:notice] = 'Status changed to public'
+    respond_to do |format|
+      if @recipe.update(recipe_params)
+        format.html { redirect_to @recipe, notice: 'Done Successfully!' }
+        format.json { render :show, status: :ok, location: @recipe }
+      else
+        format.html { render :edit, notice: 'Try Again!' }
+        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+      end
     end
   end
 
-  private
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    @recipe.toggle!(:public)
+    redirect_to @recipe
+  end
+
+  def public_recipies
+    @public = Recipe.includes(:user, :recipe_foods).where(public: true).order('created_at DESC')
+  end
+
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
-  end  
+  end
+
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end

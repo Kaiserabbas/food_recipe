@@ -11,6 +11,8 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 # https://github.com/heartcombo/devise
 gem 'devise'
 
+gem 'bootstrap', '~> 4.0'
+
 # https://github.com/CanCanCommunity/cancancan
 gem 'cancancan', '~> 3.0'
 
