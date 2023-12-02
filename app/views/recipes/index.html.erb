@@ -1,0 +1,21 @@
+<% if notice.present? %>
+  <div class="notice">
+    <p><%= notice %></p>
+  </div>
+<% end %>
+
+<h1 class="page-title">Recipes</h1>
+
+<div class="recipes-container">
+  <% if @recipes.any? %>
+    <% @recipes.each do |recipe| %>
+      <div class="recipe">
+        <%= render recipe %>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="no-recipes-msg">No recipes in the database.</p>
+  <% end %>
+</div>
+
+<%= link_to "Add New Recipe", new_recipe_path, class: "add-recipe-link" %>
