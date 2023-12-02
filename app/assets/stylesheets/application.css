@@ -81,6 +81,14 @@ h1 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.action-buttons a {
+  text-decoration: none;
+  border: 3px solid #000;
+  padding: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
 .sign-out a:hover {
   background-color: #fff;
   color: #4e96e9;
@@ -89,6 +97,7 @@ h1 {
 table {
   border-collapse: collapse;
   width: 80%;
+  margin: 0 auto;
   margin-top: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -268,4 +277,44 @@ tbody tr:hover {
   text-decoration: none;
   border-radius: 4px;
   margin-top: 20px;
+}
+
+.recipe-details2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+.public-button-container {
+  margin-left: auto;
+}
+
+.time-details {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 80%;
+}
+
+.time-details2 {
+  display: flex;
+  justify-content: left;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 80%;
+}
+
+.toggle-button {
+  margin-bottom: 10px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 80%;
 }

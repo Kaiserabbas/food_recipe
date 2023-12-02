@@ -1,14 +1,19 @@
-<h1>Recipe details</h1>
-<h1><%= @recipe.name %></h1>
-<p>Preparation time: <%= @recipe.preparation_time %> min</p>
-<p>Cooking time: <%= @recipe.cooking_time %> min</p>
-<p>Steps: <%= @recipe.description %></p>
-<% if can? :update, @recipe %>
-<%= button_to(@recipe.public? ? "Make Private" : "Make Public", toggle_recipe_public_path(@recipe), method: :put) %>
-    <%= link_to 'Generate Shopping List', "/shopping_list" %>
-    <%= link_to 'Add Ingredients', "/recipes/#{@recipe.id}/recipe_foods/new" %>
-<% end %>
-<div>
+  <h1><%= @recipe.name %></h1>
+  <div class="time-details">
+    <p>Preparation time: <%= @recipe.preparation_time %> min</p>
+    <% if can? :update, @recipe %>
+      <div class="public-button-container">
+        <%= button_to(@recipe.public? ? "Make Private" : "Make Public", toggle_recipe_public_path(@recipe), method: :put) %>
+      </div>
+    <% end %>
+  </div>
+  <div class="time-details2">
+      <p>Cooking time: <%= @recipe.cooking_time %> min</p>
+  </div>
+    <div class="action-buttons">
+      <%= link_to 'Generate Shopping List', "/shopping_list" %>
+      <%= link_to 'Add Ingredients', "/recipes/#{@recipe.id}/recipe_foods/new" %>
+    </div>
 <table>
   <thead>
     <tr>
