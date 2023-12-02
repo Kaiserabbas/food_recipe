@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-    before do
+  before do
     allow_any_instance_of(User).to receive(:save).and_return(true) # Stubbing User creation
   end
   describe 'associations' do
@@ -17,13 +17,13 @@ RSpec.describe Recipe, type: :model do
   describe 'validations' do
     let!(:user) { User.create(name: 'test', email: 'test@test.com', password: 'password') }
 
-it 'is valid with valid attributes' do
-        recipe = Recipe.new(
+    it 'is valid with valid attributes' do
+      recipe = Recipe.new(
         name: 'recipe',
         preparation_time: 10,
         cooking_time: 20,
         description: 'my recipe',
-        public: false,
+        public: false
       )
       expect(recipe).not_to be_valid
     end
