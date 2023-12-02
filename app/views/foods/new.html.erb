@@ -4,12 +4,15 @@
   <%= f.text_field :name, placeholder: "Food name", autofocus: true, required: true %>
   
   <!-- Dropdown for Measurement Unit -->
+  <p>Measurement Unit <p>
   <%= f.select :measurement_unit, ['kg', 'g', 'ounce', 'numbers'], prompt: "Select unit", required: true %>
   
   <!-- Input field for Quantity -->
+  <p>Quantity <p>
   <%= f.number_field :quantity, placeholder: "Quantity", required: true %>
   
   <!-- Input field for Price -->
+  <p>Unit price <p>
   <%= f.number_field :price, placeholder: "Unit price", step: "0.01", required: true %>
   
   <%= f.submit "Add Food" %>
