@@ -1,11 +1,11 @@
-<div>
-  <div>
-    <p>
+<div class="recipe">
+  <div class="recipe-details">
+    <p class="recipe-name">
       <%= link_to recipe.name, recipe %>
     </p>
-    <%= button_to "Delete recipe", recipe, method: :delete %>
+    <%= button_to "Delete recipe", recipe, method: :delete, data: { confirm: "Are you sure?" }, class: "delete-button" %>
   </div>
-  <p>
+  <p class="recipe-description">
     <%= recipe.description %>
   </p>
 </div>
