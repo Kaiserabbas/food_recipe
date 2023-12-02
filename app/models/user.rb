@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :recipes, foreign_key: :user_id, dependent: :destroy
   has_many :foods, foreign_key: :user_id, dependent: :destroy
   has_many :recipe_foods, dependent: :destroy
+  attr_accessor :confirmation_sent_at
 
   validates :name, presence: true
 

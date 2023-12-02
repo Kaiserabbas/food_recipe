@@ -6,6 +6,14 @@
 </div>
 <% if @shopping_list.empty? %>
 <p>No food added to the inventory yet.</p>
+    <thead>
+        <tr>
+            <th>Food</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
 <% else %>
 <table>
     <thead>
