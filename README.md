@@ -60,6 +60,21 @@ To install the project's dependencies, run:
 
 ```
 bundle install
+rails db:migrate
+```
+
+### Run server <a name="run tests"></a>
+```
+rails server
+```
+then to confirm user after registeration 
+
+```
+rails console 
+```
+```
+user = User.find_by(email: 'example@example.com')
+user.update_columns(confirmed_at: Time.current)
 ```
 
 ### Run tests <a name="run tests"></a>

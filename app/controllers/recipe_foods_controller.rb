@@ -26,7 +26,11 @@ class RecipeFoodsController < ApplicationController
 
   def edit
     @recipe = Recipe.find_by(id: params[:recipe_id])
-    @recipe_food = RecipeFood.includes(:recipe).find_by(id: params[:id])
+    @recipe_food = if params[:id]
+                     RecipeFood.find_by(id: params[:id])
+                   else
+                     RecipeFood.includes(:recipe).find_by(recipe_id: params[:recipe_id])
+                   end
 
     return if @recipe_food
 

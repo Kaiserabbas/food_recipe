@@ -23,7 +23,7 @@
         <td><%= food.measurement_unit %></td>
         <td><%= food.quantity %></td>
         <td>$<%= food.price %></td>
-        <td><%= link_to 'Delete Food', food, data: { turbo_method: :delete, turbo_confirm: 'You are about to delete this food! Do you want to continue?' }, type:"button" %></td>
+        <td><%= button_to "Delete", food_path(food.id), method: :delete, data: { confirm: 'You are about to delete this food! Do you want to continue?' }, class: 'btn btn-danger delete-button' %></td>
       </tr>
     <% end %>
   </tbody>
