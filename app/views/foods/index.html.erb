@@ -1,7 +1,7 @@
 <div class="food-container">
 <div>
   <h1>Food List</h1>
-  <%= button_to 'Add Food', new_food_path, class: "add-btn" %>
+  <%= link_to 'Add Food', new_food_path, class: "add-food-btn" %>
 </div>
 
 <% if @foods.empty? %>
