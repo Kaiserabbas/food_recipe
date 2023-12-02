@@ -111,3 +111,19 @@ tbody tr:nth-child(odd) {
 tbody tr:hover {
   background-color: #e0e0e0;
 }
+
+.food-container{
+  padding: 20px;
+  margin-bottom: 20px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.add-btn{
+  margin-left: 40rem;
+
+}
