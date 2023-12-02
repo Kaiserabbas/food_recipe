@@ -45,15 +45,15 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :model
   config.include Devise::Test::ControllerHelpers, type: :controller
 
-    Shoulda::Matchers.configure do |config|
-    config.integrate do |with|
+  Shoulda::Matchers.configure do |shoulda_config|
+    shoulda_config.integrate do |with|
       with.test_framework :rspec
       with.library :rails
     end
   end
-  config.before(:each, type: :system, js: true) do
+  shoulda_config.before(:each, type: :system, js: true) do
     driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
-  end   
+  end
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
