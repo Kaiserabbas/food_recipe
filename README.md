@@ -47,7 +47,7 @@ Ruby on Rails, Visual Studia Code, WSL
 
 In order to use this project.. Clone this repository to your desired folder by pasting this command in your command line interface:
 
-  https://github.com/tajemouti/rails_group_project.git
+  https://github.com/Kaiserabbas/food_recipe.git
 
 ### Prerequisites <a name="prerequisites"></a>
 
